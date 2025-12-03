@@ -39,7 +39,11 @@ We will select three main models relevant to the course content in CSE 158: Web 
     Here, we use a simple linear classifier with features like subreddit (one-hot encoded), hour of day, day of week, and title length. This baseline looks at if temporal and patterns within subreddits are sufficient for identifying posts that are likely to become controversial, without even looking at the language of the title itself.
 * **Jaccard similarity baseline (similar posts)**
     The third baseline is a similarity based approach by representing each post title as a set of tokens and measuring the Jaccard Similarity between titles:
-    $$J(A,B) = \frac{|A \cap B|}{|A \cup B|}$$
+    
+    $$
+    J(A,B) = \frac{|A \cap B|}{|A \cup B|}
+    $$
+
     For a new post, we find the most similar past posts using Jaccard similarity and look at how many were labeled as controversial. If enough of its nearest neighbors are controversial, we predict that the post will also be controversial, and the converse also applies. This baseline lets us explore a simple question: "Do posts that have similar titles to previously controversial posts tend to become controversial as well?"
 
 #### 1.6 Assessing the validity of model predictions
@@ -109,7 +113,10 @@ The histograms above show the distribution of `total_votes` and `number_of_comme
 ![Distribution of Balance Ratio](images/balance_ratio.png)
 
 As previously mentioned, to quantify how balanced the feedback a post receives is, we operationalize a voting balance ratio, defined as:
-$$\text{balance-ratio} = \frac{\min(\text{upvotes}, \text{downvotes})}{\max(\text{upvotes}, \text{downvotes})}$$
+
+$$
+\text{balance-ratio} = \frac{\min(\text{upvotes}, \text{downvotes})}{\max(\text{upvotes}, \text{downvotes})}
+$$
 
 A value near 0 means the post is extremely one sided (mostly upvotes or downvotes). On the other hand, a value near 1 means the post received a nearly equal number of upvotes and downvotes, which indicates mixed reactions.
 
@@ -192,7 +199,10 @@ We train a logistic regression model and optimize it via logistic loss using onl
 
 #### 3.2.3 Jaccard similarity baseline
 This is a similarity based baseline that only uses the title text. We evaluate the Jaccard baseline separately by splitting the list of titles into train/validation test partitions, computing token sets for the titles in the training set, and then finally predicting the label for each title in the test set based on its nearest neighbors based on Jaccard similarity:
-$$J(A,B) = \frac{|A \cap B|}{|A \cup B|}$$
+
+$$
+J(A,B) = \frac{|A \cap B|}{|A \cup B|}
+$$
 
 For this baseline, exact nearest neighbor search over the entire training set is very computationally expensive due to its quadratic time complexity. Instead, we will evaluate the baseline on a random subset of 10k training titles and 3k test titles. This still provides a reasonable comparison but also underestimates the performance of using the entire training set.
 

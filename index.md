@@ -52,7 +52,7 @@ Besides reporting performance metrics, we also want to make sure that the model 
 ## 2. Exploratory analysis, data collection, pre-processing, and discussion
 
 #### 2.1 Context
-The dataset used in this project is the *Reddit Resubmissions* dataset from the Stanford Network Analysis Project (SNAP). It contains over one hundred thousand Reddit posts that have appeared multiple times on the platform. Each entry in the dataset represents a reddit post and it's image, title, user, subreddit, timestamp, and several other engagement metrics such as the number of upvotes.
+The dataset used in this project is the *Reddit Resubmissions* dataset from the Stanford Network Analysis Project (SNAP). It contains over one hundred thousand Reddit posts that have appeared multiple times on the platform. Each entry in the dataset represents a reddit post and its image, title, user, subreddit, timestamp, and several other engagement metrics such as the number of upvotes.
 
 > Understanding the interplay between titles, content, and communities in social media
 > Himabindu Lakkaraju, Julian McAuley, Jure Leskovec
